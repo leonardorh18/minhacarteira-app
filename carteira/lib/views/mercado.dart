@@ -17,6 +17,7 @@ class Mercado extends StatefulWidget {
 class _MercadoState extends State<Mercado> {
   double preco = 0.0;
   var moeda = TextEditingController();
+  
   var crypto = TextEditingController();
 
   Future<void> reqp(String crypto, String moeda) async {
@@ -60,7 +61,7 @@ class _MercadoState extends State<Mercado> {
                     ) ,
               ),
                 Padding(
-                padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
+                padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
                 child:Center(
                       child: Text('*digite o nome da cryptomoeda abaixo*', 
                       style: TextStyle(
@@ -82,7 +83,7 @@ class _MercadoState extends State<Mercado> {
                       filled: true,
                       fillColor: Colors.white,
                         labelText: "Crypto",
-                        contentPadding: EdgeInsets.fromLTRB(5.0, 15.0, 20.0, 10.0),
+                        contentPadding: EdgeInsets.fromLTRB(5.0, 15.0, 20.0, 0),
                         hintText: "Nome" ,
                         border:
                         OutlineInputBorder(borderRadius: BorderRadius.horizontal()),
@@ -93,7 +94,7 @@ class _MercadoState extends State<Mercado> {
                 ), 
               ),
                Padding(
-                padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
+                padding: EdgeInsets.fromLTRB(0, 5, 0, 0),
                 child:Center(
                       child: Text('Moeda', 
                       style: TextStyle(
@@ -102,7 +103,7 @@ class _MercadoState extends State<Mercado> {
                     ) ,
               ),
               Padding(
-                padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
+                padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
                 child:Center(
                       child: Text('*moeda padrão é BRL*', 
                       style: TextStyle(
@@ -157,7 +158,7 @@ class _MercadoState extends State<Mercado> {
               ),
               Padding(padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
               child: Center(
-                child: Text(moeda.text.toUpperCase()+": "+preco.toString(), style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
+                child: Text(moeda.text.toUpperCase()+": "+preco.toString(), style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),),
                 )
               )
 
