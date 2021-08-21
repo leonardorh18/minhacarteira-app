@@ -1,13 +1,15 @@
 
 import 'package:carteira/views/Home.dart';
 import 'package:flutter/material.dart';
-
+import 'package:google_sign_in/google_sign_in.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart' show FaIcon, FontAwesomeIcons;
 import 'package:page_transition/page_transition.dart';
 
 
 
 // ignore: must_be_immutable
 class Login extends StatefulWidget {
+
   
   @override
   _LoginState createState() => _LoginState();
@@ -17,90 +19,47 @@ class _LoginState extends State<Login> {
   String _erro = '';
   bool logado = true;
   
-    final email = TextEditingController();
-    final senha = TextEditingController();
-    final emailRec = TextEditingController();
+  late GoogleSignInAccount userObj;
+  GoogleSignIn _googleSignIn = GoogleSignIn();
 
-    bool _obscureText = true;
     
-   void toggle(){
-     setState(() {
-       _obscureText = !_obscureText;
-     });
-   }
-
-  
    @override
     void initState()   {
-      
       
       super.initState();
       
     }
   Widget build(BuildContext context) {
 
-    final emailField = TextField(
-      obscureText: false,
-      controller: email,
-      decoration: InputDecoration(
-        filled: true,
-        fillColor: Colors.white,
-          contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-          hintText: "Email",
-          border:
-          OutlineInputBorder(borderRadius: BorderRadius.circular(12.0)),
-          helperText: "Digite seu email",
-
+    final loginButon = ElevatedButton.icon(
+      style: ElevatedButton.styleFrom(
+        primary: Colors.white,
+        onPrimary: Colors.black,
+        minimumSize: Size(double.infinity, 50),
       ),
-    );
-    final passwordField = TextField(
-      obscureText: _obscureText,
-      controller: senha,
-      decoration: InputDecoration(
-        suffixIcon: IconButton(icon: _obscureText ? Icon(Icons.visibility_off) : Icon(Icons.visibility), onPressed: toggle),
-        filled: true,
-        fillColor: Colors.white,
-          contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-          hintText: "Senha",
-          border:
-          OutlineInputBorder(borderRadius: BorderRadius.circular(12.0)),
-           helperText: "Digite sua senha",
-      ),
+      icon: FaIcon(FontAwesomeIcons.google, color: Colors.red,),
+      label: Text("Entrar com Google"),
+      onPressed: (){
+          _googleSignIn.signIn().then((userData){
+          
+          setState(() {
+            logado = true;
+            userObj = userData!;
+          });
 
-    );
-    final loginButon = Material(
-      elevation: 5.0,
-      borderRadius: BorderRadius.circular(30.0),
-      color: Colors.greenAccent[700],
-      child: MaterialButton(
-        minWidth: MediaQuery.of(context).size.width,
-        padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-        onPressed: (){
-          Navigator.push(context, PageTransition(type: PageTransitionType.rightToLeft, child: Home()));
+          }).catchError((e){
+            print(e);
+          });
+          if (logado){
+
+            Navigator.push(context, PageTransition(type: PageTransitionType.rightToLeft, child: Home(user: userObj)));
+
+          }
+          
         },
-        child: Text("Entrar",
-            textAlign: TextAlign.center,
-
-      ),
-      ),
-    );
-    final registerButon = Material(
-      elevation: 5.0,
-      borderRadius: BorderRadius.circular(30.0),
-      color: Colors.blue[700],
-      child: MaterialButton(
-        minWidth: MediaQuery.of(context).size.width,
-        padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-        onPressed: (){
-          //Navigator.push(context, PageTransition(type: PageTransitionType.rightToLeft, child: Cadastro()));
-        },
-          child: Text("Cadastrar",
-          textAlign: TextAlign.center,
-
-          ),
-          ),
-          );
-
+      
+      );
+    
           return  Scaffold(
             backgroundColor: Colors.white,
           body:  SingleChildScrollView(
@@ -147,44 +106,16 @@ class _LoginState extends State<Login> {
                         child: Column(
                           children: <Widget>[
                                 SizedBox(height: 15.0),
-                                 SizedBox(
-                                  width: MediaQuery.of(context).size.width/1.3,
-                                  child: emailField,
-                                ),
                                 
+                            
                                 SizedBox(height: 25.0),
-                                
-                                SizedBox(
-                                  width: MediaQuery.of(context).size.width/1.3,
-                                  child: passwordField,
-                                ),
-                              
-                                SizedBox(
-                                  height: 25.0,
-                                ),
+                          
                                 SizedBox(
                                 
                                   width: MediaQuery.of(context).size.width/2,
                                   child: loginButon,
                                 ),
                                 
-                                SizedBox(
-                                  height: 25.0,
-                                ),
-                                SizedBox(
-                                  width: MediaQuery.of(context).size.width/2,
-                                  child: registerButon,
-                                ),
-                                
-                                SizedBox(height: 20,),
-                                GestureDetector(
-                                  onTap: (){
-                                    
-                                  },
-                                  child:Center(child: Text('Esqueci minha senha',
-                                  style: TextStyle(fontSize: 17, color: Colors.black, fontStyle: FontStyle.italic)),
-                                ),
-                                ),
                                 SizedBox(
                                   height: 25.0,
                                 ),

@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "784447002302",
+    "project_id": "carteira-c3048",
+    "storage_bucket": "carteira-c3048.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:784447002302:android:7f1fb723cf0c727b7f70ef",
+        "android_client_info": {
+          "package_name": "com.example.carteira"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "784447002302-2o8sabb50qh582fl5lfntbk5o2ff94j1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.carteira",
+            "certificate_hash": "e1ed45a38d4cd99e5e9cc49c5aa36bc98be71b1e"
+          }
+        },
+        {
+          "client_id": "784447002302-9430ulm2fcjf04tbgfqi3vjjjmef6nhd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDYDlWYCpdnn6LROxYwOAxcBdh1ODhNS0M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "784447002302-9430ulm2fcjf04tbgfqi3vjjjmef6nhd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

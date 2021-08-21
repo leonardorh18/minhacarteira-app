@@ -6,10 +6,12 @@ import 'package:carteira/views/mercado.dart';
 import 'package:carteira/views/perfil.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
-
+import 'package:font_awesome_flutter/font_awesome_flutter.dart' show FaIcon, FontAwesomeIcons;
 
 class Home extends StatefulWidget {
-  
+  var user;
+  Home({this.user});
+
   int indexAtual = 0;
   
   @override
@@ -39,16 +41,14 @@ class _HomeState extends State<Home> {
     Perfil(),
     Carteira(),
     Mercado(),
-    
-    
   ];
 
     return Scaffold(
       resizeToAvoidBottomInset: false, 
-      appBar: AppBar(title: Text('Bem vindo, ', 
-            style: TextStyle(color: Colors.white),
+      appBar: AppBar(title: Text('Bem vindo, ' + widget.user.displayName, 
+            style: TextStyle(color: Colors.black),
             ),
-       backgroundColor: Colors.blue[700], 
+       backgroundColor: Colors.grey[200], 
        automaticallyImplyLeading: false,
       iconTheme: IconThemeData(color: Colors.redAccent),
       actions: [
@@ -85,22 +85,24 @@ class _HomeState extends State<Home> {
 
           },
           type: BottomNavigationBarType.fixed,
-          fixedColor: Colors.green[700],
+          //fixedColor: Colors.red,
           iconSize: 30,
+          selectedItemColor: Colors.redAccent,
+          selectedFontSize: 20,
           
           items: [
             BottomNavigationBarItem(
               label: "Eu",
-              icon: Icon(Icons.person),
+              icon: FaIcon(FontAwesomeIcons.user, color: Colors.yellow[900],),
             ),
             BottomNavigationBarItem(
               label: "Carteira",
-              icon: Icon(Icons.wallet_travel_sharp,)
+              icon: FaIcon(FontAwesomeIcons.wallet, color: Colors.blue,),
             ),
 
             BottomNavigationBarItem(
               label: "Mercado",
-              icon: Icon(Icons.attach_money),
+              icon:  FaIcon(FontAwesomeIcons.bitcoin, color: Colors.yellow[900],),
             ),
             
             
