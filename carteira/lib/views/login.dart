@@ -1,4 +1,5 @@
 
+import 'package:carteira/views/Home.dart';
 import 'package:flutter/material.dart';
 
 import 'package:page_transition/page_transition.dart';
@@ -74,7 +75,9 @@ class _LoginState extends State<Login> {
       child: MaterialButton(
         minWidth: MediaQuery.of(context).size.width,
         padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-        onPressed: (){},
+        onPressed: (){
+          Navigator.push(context, PageTransition(type: PageTransitionType.rightToLeft, child: Home()));
+        },
         child: Text("Entrar",
             textAlign: TextAlign.center,
 
