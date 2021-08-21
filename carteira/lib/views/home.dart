@@ -38,7 +38,7 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
   
   List<Widget> listaTelas = [
-    Perfil(),
+    Perfil(user: widget.user),
     Carteira(),
     Mercado(),
   ];
@@ -60,12 +60,10 @@ class _HomeState extends State<Home> {
                       
                       //Navigator.pushReplacement(context, PageTransition(type: PageTransitionType.rightToLeftWithFade, child: Login()));
             },
-            child: Icon(
-              Icons.exit_to_app,
-              size: 26.0,
+            child: Center(child:FaIcon(FontAwesomeIcons.signOutAlt, color: Colors.red,)),
             ),
           )
-    ),
+    
       ],
       
       ),
