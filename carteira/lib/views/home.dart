@@ -1,6 +1,9 @@
 
 
 
+import 'package:carteira/views/carteira.dart';
+import 'package:carteira/views/mercado.dart';
+import 'package:carteira/views/perfil.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 
@@ -33,7 +36,11 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
   
   List<Widget> listaTelas = [
-   Scaffold(),
+    Perfil(),
+    Carteira(),
+    Mercado(),
+    
+    
   ];
 
     return Scaffold(

@@ -12,8 +12,12 @@ class Perfil extends StatefulWidget {
 class _PerfilState extends State<Perfil> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      
+   return Container(
+      child: Column(
+        children: [
+            Text('Perfil')
+        ],
+      ),
     );
   }
 }

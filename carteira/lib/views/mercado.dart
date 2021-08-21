@@ -12,7 +12,11 @@ class _MercadoState extends State<Mercado> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      
+      child: Column(
+        children: [
+            Text('Mercado'),
+        ],
+      ),
     );
   }
 }
