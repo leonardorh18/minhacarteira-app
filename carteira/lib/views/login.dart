@@ -31,7 +31,7 @@ class _LoginState extends State<Login> {
     }
   Widget build(BuildContext context) {
 
-    final loginButon = ElevatedButton.icon(
+    final loginGoogleButton = ElevatedButton.icon(
       style: ElevatedButton.styleFrom(
         primary: Colors.white,
         onPrimary: Colors.black,
@@ -39,8 +39,8 @@ class _LoginState extends State<Login> {
       ),
       icon: FaIcon(FontAwesomeIcons.google, color: Colors.red,),
       label: Text("Entrar com Google"),
-      onPressed: (){
-          _googleSignIn.signIn().then((userData){
+      onPressed: () async {
+          await _googleSignIn.signIn().then((userData){
           
           setState(() {
             logado = true;
@@ -59,6 +59,21 @@ class _LoginState extends State<Login> {
         },
       
       );
+
+      final loginfacebookButton = ElevatedButton.icon(
+      style: ElevatedButton.styleFrom(
+        primary: Colors.white,
+        onPrimary: Colors.black,
+        minimumSize: Size(double.infinity, 50),
+      ),
+      icon: FaIcon(FontAwesomeIcons.facebook, color: Colors.blue[900],),
+      label: Text("(não disponivel)"),
+      onPressed: (){
+   
+          
+        },
+      
+      );
     
           return  Scaffold(
             backgroundColor: Colors.white,
@@ -72,17 +87,20 @@ class _LoginState extends State<Login> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      Padding(padding: EdgeInsets.only(top: 10),
+                      Padding(padding: EdgeInsets.only(top: 60),
                       child: SizedBox(
                           height: 255.0,
-                          child: Text('Login')
+                          child: Image.asset(
+                            "images/bitcoins.png",
+                            fit: BoxFit.contain,
+                          )
 
                       ),
                       
                       ),
                      
                       
-                      SizedBox(height: 25.0),
+                      SizedBox(height: 55.0),
                       Container(
                         width: MediaQuery.of(context).size.width + 10,
                         decoration: BoxDecoration(
@@ -105,15 +123,20 @@ class _LoginState extends State<Login> {
                         ),
                         child: Column(
                           children: <Widget>[
-                                SizedBox(height: 15.0),
-                                
-                            
+                              
                                 SizedBox(height: 25.0),
                           
                                 SizedBox(
                                 
                                   width: MediaQuery.of(context).size.width/2,
-                                  child: loginButon,
+                                  child: loginGoogleButton,
+                                ),
+                                                                SizedBox(height: 25.0),
+                          
+                                SizedBox(
+                                
+                                  width: MediaQuery.of(context).size.width/2,
+                                  child: loginfacebookButton,
                                 ),
                                 
                                 SizedBox(

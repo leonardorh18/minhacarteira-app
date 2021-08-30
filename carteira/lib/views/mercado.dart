@@ -16,7 +16,8 @@ class Mercado extends StatefulWidget {
 }
 class _MercadoState extends State<Mercado> {
   double preco = 0.0;
-  var moeda = TextEditingController();
+  var moeda = TextEditingController(text: 'BRL');
+  
   
   var crypto = TextEditingController();
 
@@ -24,8 +25,12 @@ class _MercadoState extends State<Mercado> {
 
   if (moeda.trim().isEmpty){
 
-    moeda = 'brl';
+    setState(() {
+      moeda = 'BRL';
+      this.moeda.text = 'BRL';
 
+    });
+    
   }
   // url coin 'https://api.coingecko.com/api/v3/coins/bitcoin?localization=false&tickers=false&market_data=true&community_data=false&developer_data=false&sparkline=false'
   var url = Uri.parse('https://api.coingecko.com/api/v3/coins/'+crypto.toLowerCase()+'?localization=false&tickers=false&market_data=true&community_data=false&developer_data=false&sparkline=false');

@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
+import 'package:font_awesome_flutter/font_awesome_flutter.dart' show FaIcon, FontAwesomeIcons;
 class Carteira extends StatefulWidget {
   
 
@@ -14,7 +14,20 @@ class _CarteiraState extends State<Carteira> {
     return Container(
       child: Column(
         children: [
-            Text('Carteira')
+            ElevatedButton.icon(
+              style: ElevatedButton.styleFrom(
+                primary: Colors.white,
+                onPrimary: Colors.black,
+                minimumSize: Size(double.infinity, 50),
+              ),
+              icon: FaIcon(FontAwesomeIcons.bitcoin, color: Colors.orange[700],),
+              label: Text("Adicionar compra de ativo"),
+              onPressed: (){
+          
+                  
+                },
+              
+              ),
         ],
       ),
     );
