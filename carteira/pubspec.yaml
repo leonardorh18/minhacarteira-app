@@ -23,6 +23,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  fluttertoast: ^3.1.0
+  flutter_spinkit: ^4.1.2+1
   mobx: ^1.2.1+4
   flutter_mobx: ^1.1.0+1
   page_transition: ^2.0.2

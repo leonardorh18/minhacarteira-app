@@ -1,3 +1,4 @@
+import 'package:carteira/views/loading.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'dart:convert' as convert;
@@ -16,6 +17,7 @@ class Mercado extends StatefulWidget {
 }
 class _MercadoState extends State<Mercado> {
   double preco = 0.0;
+  Loading load = Loading();
   var moeda = TextEditingController(text: 'BRL');
   
   
@@ -149,9 +151,9 @@ class _MercadoState extends State<Mercado> {
                       minWidth: MediaQuery.of(context).size.width/2,
                       padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
                       onPressed: () async{
-
+                        load.loading(context);
                         await reqp(crypto.text, moeda.text);
-
+                        load.loadingClose(context);
                       },
                       child: Text("Procurar",
                           textAlign: TextAlign.center,
