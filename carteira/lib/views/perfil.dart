@@ -44,7 +44,7 @@ class _PerfilState extends State<Perfil> {
                           minWidth: MediaQuery.of(context).size.width,
                           padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
                           onPressed: (){
-                            
+                            print(widget.user);
                           },
                             child: Text("Visualizar histórico de compras",
                             textAlign: TextAlign.center,
