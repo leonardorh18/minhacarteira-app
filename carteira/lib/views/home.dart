@@ -2,9 +2,12 @@
 
 
 import 'package:carteira/views/carteira.dart';
+import 'package:carteira/views/login.dart';
 import 'package:carteira/views/mercado.dart';
 import 'package:carteira/views/perfil.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart' show FaIcon, FontAwesomeIcons;
 
@@ -21,7 +24,7 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
    
   
-
+  GoogleSignIn _googleSignIn = GoogleSignIn();
 
   @override
    void initState(){
@@ -55,10 +58,10 @@ class _HomeState extends State<Home> {
          Padding(
           padding: EdgeInsets.only(right: 20.0),
           child: GestureDetector(
-            onTap: () {
+            onTap: () async{
                      
-                      
-                      //Navigator.pushReplacement(context, PageTransition(type: PageTransitionType.rightToLeftWithFade, child: Login()));
+                  await _googleSignIn.signOut();
+                  Navigator.pushReplacement(context, PageTransition(type: PageTransitionType.rightToLeftWithFade, child: Login()));
             },
             child: Center(child:FaIcon(FontAwesomeIcons.signOutAlt, color: Colors.red,)),
             ),

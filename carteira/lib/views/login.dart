@@ -45,6 +45,7 @@ class _LoginState extends State<Login> {
           setState(() {
             logado = true;
             userObj = userData!;
+            
           });
 
           }).catchError((e){
