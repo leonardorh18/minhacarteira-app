@@ -1,3 +1,5 @@
+
+import 'package:carteira/views/controller.dart';
 import 'package:carteira/views/loading.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -19,7 +21,7 @@ class _MercadoState extends State<Mercado> {
   double preco = 0.0;
   Loading load = Loading();
   var moeda = TextEditingController(text: 'BRL');
-  
+  Controller controller = new Controller();
   
   var crypto = TextEditingController();
 
@@ -36,19 +38,16 @@ class _MercadoState extends State<Mercado> {
   }
   // url coin 'https://api.coingecko.com/api/v3/coins/bitcoin?localization=false&tickers=false&market_data=true&community_data=false&developer_data=false&sparkline=false'
   var url = Uri.parse('https://api.coingecko.com/api/v3/coins/'+crypto.toLowerCase()+'?localization=false&tickers=false&market_data=true&community_data=false&developer_data=false&sparkline=false');
-  
-  // Await the http get response, then decode the json-formatted response.
   var response = await http.get(url);
   if (response.statusCode == 200) {
     var jsonResponse = convert.jsonDecode(response.body);
-    setState(() {
-      preco = jsonResponse['market_data']['current_price'][moeda.toLowerCase()].toDouble();
-    });
+    
+     controller.changePrice(jsonResponse['market_data']['current_price'][moeda.toLowerCase()].toDouble());
+    
     
   } else {
-    setState(() {
-      preco = 8.0;
-    });
+    
+    controller.changePrice(0);
   }
   
 }
@@ -165,7 +164,7 @@ class _MercadoState extends State<Mercado> {
               ),
               Padding(padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
               child: Center(
-                child: Text(moeda.text.toUpperCase()+": "+preco.toString(), style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),),
+                child: Text(moeda.text.toUpperCase()+": "+controller.price.toString(), style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),),
                 )
               )
 
